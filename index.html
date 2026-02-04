@@ -21,13 +21,11 @@
   margin: 0;
   color: var(--text);
   background:
-    linear-gradient(
-      180deg,
-      #eaf4ff 0%,
-      #f3f9ff 35%,
-      #ffffff 100%
-    );
+    radial-gradient(1200px 600px at 20% -10%, #dbeafe 0%, transparent 60%),
+    radial-gradient(1000px 500px at 80% 0%, #e0f2fe 0%, transparent 55%),
+    linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
 }
+
 
 
     .wrap { max-width: 960px; margin: 0 auto; padding: 56px 18px; }
@@ -38,14 +36,33 @@
     .subtitle { margin-top: 8px; color: var(--muted); }
 
     .card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin: 18px 0;
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-    }
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin: 18px 0;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+
+.card:hover {
+  box-shadow:
+    0 22px 70px rgba(15, 23, 42, .10),
+    0 0 0 1px rgba(59,130,246,.15);
+  transform: translateY(-2px);
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59,130,246,.25),
+    transparent
+  );
+  margin: 36px 0;
+}
+
 
     .row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
 
@@ -89,18 +106,21 @@
 
     /* Sparkle (HB) */
     .sparkle {
-      position: fixed;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      font-size: 14px;
-      font-weight: 900;
-      color: rgba(59, 130, 246, 0.95); /* blue */
-      text-shadow: 0 10px 22px rgba(15, 23, 42, .22);
-      letter-spacing: -0.5px;
-      user-select: none;
-      animation: pop .75s ease forwards;
-      will-change: transform, opacity;
-    }
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 900;
+  color: #2563eb; /* deeper blue */
+  text-shadow:
+    0 8px 18px rgba(37, 99, 235, .35),
+    0 0 6px rgba(59,130,246,.25);
+  letter-spacing: -0.5px;
+  user-select: none;
+  animation: pop .8s ease forwards;
+  will-change: transform, opacity;
+}
+
 
     @keyframes pop {
       0% {
@@ -152,6 +172,7 @@
         </div>
       </div>
     </div>
+<div class="section-divider"></div>
 
     <!-- ABOUT -->
     <div class="card">
@@ -163,6 +184,7 @@
       </p>
       <p class="small">Open to internships and full-time positions • Summer 2026 and beyond</p>
     </div>
+<div class="section-divider"></div>
 
     <!-- EDUCATION -->
     <div class="card">
@@ -202,6 +224,7 @@
         </ul>
       </details>
     </div>
+<div class="section-divider"></div>
 
     <!-- PROJECTS -->
     <div class="card">
@@ -210,6 +233,7 @@
       <p><strong>Research Project</strong> — Applied statistical methods to real-world datasets. <a href="#">Code</a></p>
       <p class="small">(Replace these with class or personal projects anytime.)</p>
     </div>
+<div class="section-divider"></div>
 
     <!-- EXPERIENCE -->
     <div class="card">
