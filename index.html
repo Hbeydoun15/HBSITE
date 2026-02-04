@@ -85,22 +85,17 @@
     }
 
     /* Sparkle */
-    .sparkle {
-      position: fixed;
-      pointer-events:none;
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,192,203,.9);
-      transform: translate(-50%,-50%);
-      animation: pop .55s ease forwards;
-      color: skyblue
-    }
-    @keyframes pop {
-      0% { opacity: 0; transform: translate(-50%,-50%) scale(.6); }
-      20% { opacity: 1; }
-      100% { opacity: 0; transform: translate(-50%,-70%) scale(1.6); }
-    }
+  .sparkle {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 800;
+  color: rgba(59, 130, 246, 0.95); /* blue */
+  letter-spacing: -0.5px;
+  animation: pop .7s ease forwards;
+}
+
   </style>
 </head>
 
@@ -251,17 +246,19 @@
   </div>
 
   <script>
-    window.addEventListener("mousemove", (e) => {
-      if (Math.random() > 0.88) {
-        const s = document.createElement("div");
-        s.className = "sparkle";
-        s.style.left = e.clientX + "px";
-        s.style.top = e.clientY + "px";
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 600);
-      }
-    });
-  </script>
+  window.addEventListener("mousemove", (e) => {
+    if (Math.random() > 0.9) {
+      const s = document.createElement("div");
+      s.className = "sparkle";
+      s.textContent = "HB";
+      s.style.left = e.clientX + "px";
+      s.style.top = e.clientY + "px";
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 700);
+    }
+  });
+</script>
+
 </body>
 </html>
 
