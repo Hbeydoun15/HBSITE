@@ -1,45 +1,209 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hassan — Portfolio</title>
+  <title>Hassan Beydoun — Portfolio</title>
+
   <style>
-    body { font-family: system-ui, Arial; margin: 0; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 48px 18px; }
-    .card { border: 1px solid #e5e7eb; border-radius: 16px; padding: 18px; margin: 14px 0; }
-    .row { display:flex; gap:10px; flex-wrap:wrap; }
-    .pill { border: 1px solid #e5e7eb; border-radius: 999px; padding: 8px 12px; display:inline-block; text-decoration:none; color:#111; }
-    .pill:hover { transform: translateY(-1px); }
+    :root{
+      --bg: #fbfbff;
+      --card: rgba(255,255,255,.75);
+      --border: rgba(15, 23, 42, .10);
+      --text: #0f172a;
+      --muted: rgba(15, 23, 42, .70);
+      --shadow: 0 18px 60px rgba(15, 23, 42, .08);
+      --radius: 18px;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(900px 400px at 15% 0%, rgba(255,192,203,.35), transparent 60%),
+        radial-gradient(900px 450px at 85% 10%, rgba(173,216,230,.35), transparent 60%),
+        radial-gradient(900px 450px at 50% 100%, rgba(221,214,254,.35), transparent 60%),
+        var(--bg);
+    }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 56px 18px; }
+
+    h1 { margin: 0; font-size: 40px; letter-spacing: -0.5px; }
+    h2 { margin: 0 0 10px; }
+
+    .subtitle { margin-top: 8px; color: var(--muted); }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin: 18px 0;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 14px;
+      display:inline-block;
+      text-decoration:none;
+      color: var(--text);
+      background: rgba(255,255,255,.7);
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
+    }
+    .pill:hover {
+      transform: translateY(-2px) rotate(-0.3deg);
+      box-shadow: 0 14px 30px rgba(15,23,42,.10);
+    }
+
+    .small { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+    /* Accordion */
+    details {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.6);
+      margin-top: 12px;
+    }
+    summary { cursor: pointer; font-weight: 700; }
+    summary::-webkit-details-marker { display:none; }
+
+    .tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Sparkle */
+    .sparkle {
+      position: fixed;
+      pointer-events:none;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,192,203,.9);
+      transform: translate(-50%,-50%);
+      animation: pop .55s ease forwards;
+    }
+    @keyframes pop {
+      0% { opacity: 0; transform: translate(-50%,-50%) scale(.6); }
+      20% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%,-70%) scale(1.6); }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <h1 style="margin:0;">Hassan Beydoun</h1>
-    <p style="opacity:.7;margin-top:8px;">Student • Job-seeking • Ann Arbor, MI</p>
 
-    <div class="row">
-      <a class="pill" href="mailto:Hbey@umich.edu">Email</a>
-      <a class="pill" href="https://linkedin.com/in/hassan-beydoun-a3019a185/" target="_blank">LinkedIn</a>
-      <a class="pill" href="https://github.com/hbeydoun15" target="_blank">GitHub</a>
+    <!-- HERO -->
+    <div class="card">
+      <h1>Hassan Beydoun</h1>
+      <div class="subtitle">
+        MSI Data Science & Analytics • University of Michigan • Ann Arbor, MI
+      </div>
 
+      <div class="row">
+        <a class="pill" href="mailto:Hbey@umich.edu">Email</a>
+        <a class="pill" href="https://linkedin.com/in/hassan-beydoun-a3019a185/" target="_blank">LinkedIn</a>
+        <a class="pill" href="https://github.com/hbeydoun15" target="_blank">GitHub</a>
+        <a class="pill" href="resume.pdf">Resume (PDF)</a>
+      </div>
     </div>
 
+    <!-- ABOUT -->
     <div class="card">
       <h2>About</h2>
-      <p>Short intro about what you’re studying and what roles you’re applying for.</p>
+      <p>
+        I’m a Master’s student at the University of Michigan studying Data Science & Analytics,
+        graduating in May 2026. I’m interested in data analyst and analytics-focused roles where
+        I can combine technical skills with research, communication, and real-world impact.
+      </p>
+      <p class="small">Open to internships • Summer 2026</p>
     </div>
 
+    <!-- PROJECTS -->
     <div class="card">
       <h2>Projects</h2>
-      <p><b>Project 1</b> — one line description. <a href="#">Code</a></p>
-      <p><b>Project 2</b> — one line description. <a href="#">Code</a></p>
+      <p><strong>Data Analysis Project</strong> — Exploratory analysis and visualization using Python & SQL. <a href="#">Code</a></p>
+      <p><strong>Research Project</strong> — Applied statistical methods to real-world datasets. <a href="#">Code</a></p>
+      <p class="small">(You can replace these with class or personal projects anytime.)</p>
     </div>
 
+    <!-- EXPERIENCE -->
     <div class="card">
-      <h2>Resume</h2>
-      <p><a href="resume.pdf">Download my resume (PDF)</a></p>
+      <h2>Experience (click to expand)</h2>
+
+      <details>
+        <summary>Program Assistant — Office of the Provost (U-M)</summary>
+        <div class="small">Aug 2024 – Aug 2025 • Ann Arbor, MI</div>
+        <div class="tags">
+          <span class="tag">Content</span>
+          <span class="tag">Communication</span>
+          <span class="tag">Projects</span>
+        </div>
+        <ul>
+          <li>Published and maintained travel and identity abroad content using WordPress.</li>
+          <li>Created educational materials including videos, slide decks, and PDFs.</li>
+          <li>Produced a five-part video series covering the student travel lifecycle.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Foreign Expert — Mahidol University</summary>
+        <div class="small">Dec 2022 – Jul 2024 • Bangkok, Thailand</div>
+        <div class="tags">
+          <span class="tag">Research</span>
+          <span class="tag">Fieldwork</span>
+          <span class="tag">Public Health</span>
+        </div>
+        <ul>
+          <li>Supported collaborations with universities across Asia and globally.</li>
+          <li>Conducted field research and contributed to targeted public health solutions.</li>
+          <li>Prepared reports and supported committee initiatives.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Career Support Specialist — University of Michigan</summary>
+        <div class="small">Sep 2021 – May 2022 • Ann Arbor, MI</div>
+        <div class="tags">
+          <span class="tag">Career</span>
+          <span class="tag">Workshops</span>
+          <span class="tag">Web</span>
+        </div>
+        <ul>
+          <li>Guided students through resumes, cover letters, and job applications.</li>
+          <li>Developed a career resources website with templates and opportunities.</li>
+          <li>Facilitated resume and cover letter workshops.</li>
+        </ul>
+      </details>
     </div>
+
+    <p class="small">© 2026 Hassan Beydoun</p>
   </div>
+
+  <script>
+    window.addEventListener("mousemove", (e) => {
+      if (Math.random() > 0.88) {
+        const s = document.createElement("div");
+        s.className = "sparkle";
+        s.style.left = e.clientX + "px";
+        s.style.top = e.clientY + "px";
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 600);
+      }
+    });
+  </script>
 </body>
 </html>
