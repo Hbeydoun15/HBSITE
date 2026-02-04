@@ -84,18 +84,36 @@
       color: var(--muted);
     }
 
-    /* Sparkle */
-  .sparkle {
-  position: fixed;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  font-weight: 800;
-  color: rgba(59, 130, 246, 0.95); /* blue */
-  letter-spacing: -0.5px;
-  animation: pop .7s ease forwards;
-}
+    /* Sparkle (HB) */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: 900;
+      color: rgba(59, 130, 246, 0.95); /* blue */
+      text-shadow: 0 10px 22px rgba(15, 23, 42, .22);
+      letter-spacing: -0.5px;
+      user-select: none;
+      animation: pop .75s ease forwards;
+      will-change: transform, opacity;
+    }
 
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7);
+        filter: blur(0px);
+      }
+      18% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -88%) scale(1.65);
+        filter: blur(0.3px);
+      }
+    }
   </style>
 </head>
 
@@ -103,93 +121,91 @@
   <div class="wrap">
 
     <!-- HERO -->
-<div class="card" style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
-  
-  <img 
-    src="me.jpg" 
-    alt="Photo of Hassan Beydoun"
-    style="
-      width:130px;
-      height:130px;
-      border-radius:999px;
-      object-fit:cover;
-      border:1px solid rgba(15,23,42,.12);
-      box-shadow:0 12px 30px rgba(15,23,42,.12);
-    "
-  />
+    <div class="card" style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
+      <img
+        src="me.jpg"
+        alt="Photo of Hassan Beydoun"
+        style="
+          width:130px;
+          height:130px;
+          border-radius:999px;
+          object-fit:cover;
+          border:1px solid rgba(15,23,42,.12);
+          box-shadow:0 12px 30px rgba(15,23,42,.12);
+        "
+      />
 
-  <div>
-    <h1>Hassan Beydoun</h1>
-    <div class="subtitle">
-      Big Data Analytics • University of Michigan • Ann Arbor, MI
+      <div>
+        <h1>Hassan Beydoun</h1>
+        <div class="subtitle">
+          Big Data Analytics • University of Michigan • Ann Arbor, MI
+        </div>
+
+        <div class="row">
+          <a class="pill" href="mailto:Hbey@umich.edu">Email</a>
+          <a class="pill" href="https://linkedin.com/in/hassan-beydoun-a3019a185/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill" href="https://github.com/hbeydoun15" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="pill" href="resume.pdf">Resume (PDF)</a>
+        </div>
+      </div>
     </div>
-
-    <div class="row">
-      <a class="pill" href="mailto:Hbey@umich.edu">Email</a>
-      <a class="pill" href="https://linkedin.com/in/hassan-beydoun-a3019a185/" target="_blank">LinkedIn</a>
-      <a class="pill" href="https://github.com/hbeydoun15" target="_blank">GitHub</a>
-      <a class="pill" href="resume.pdf">Resume (PDF)</a>
-    </div>
-  </div>
-
-</div>
 
     <!-- ABOUT -->
     <div class="card">
       <h2>About</h2>
       <p>
-  I’m a Master’s student at the University of Michigan studying Big Data Analytics,
-  graduating in May 2026. I’m interested in data analyst and analytics-focused roles
-  where I can work with large datasets, apply statistical methods, and be able to communicate insights.
-</p>
-
-
+        I’m a Master’s student at the University of Michigan studying Big Data Analytics,
+        graduating in May 2026. I’m interested in data analyst and analytics-focused roles
+        where I can work with large datasets, apply statistical methods, and communicate insights clearly.
+      </p>
       <p class="small">Open to internships • Summer 2026</p>
     </div>
-<!-- EDUCATION -->
-<div class="card">
-  <h2>Education</h2>
 
-  <details open>
-    <summary>University of Michigan — Ann Arbor</summary>
-    <div class="small">
-      Master of Science in Information (MSI), Data Science & Analytics<br />
-      Expected May 2026
-    </div>
-    <div class="tags">
-      <span class="tag">Data Science</span>
-      <span class="tag">Analytics</span>
-      <span class="tag">Statistics</span>
-    </div>
-    <ul>
-      <li>Relevant coursework: Data Analysis, Machine Learning, Statistics, Data Visualization</li>
-      <li>Tools: Python, R, SQL, Git, Pandas, NumPy</li>
-    </ul>
-  </details>
+    <!-- EDUCATION -->
+    <div class="card">
+      <h2>Education</h2>
 
-  <details>
-    <summary>University of Michigan — Ann Arbor</summary>
-    <div class="small">
-      Bachelor of Science in Public Health (BSPH)<br />
-      Completed May 2022
+      <details open>
+        <summary>University of Michigan — Ann Arbor</summary>
+        <div class="small">
+          Master of Science in Information (MSI), Data Science & Analytics<br />
+          Expected May 2026
+        </div>
+        <div class="tags">
+          <span class="tag">Big Data</span>
+          <span class="tag">Analytics</span>
+          <span class="tag">Statistics</span>
+        </div>
+        <ul>
+          <li>Relevant coursework: Data Analysis, Machine Learning, Statistics, Data Visualization</li>
+          <li>Tools: Python, R, SQL, Git, Pandas, NumPy</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>University of Michigan — Ann Arbor</summary>
+        <div class="small">
+          Bachelor of Science in Public Health (BSPH)<br />
+          Completed May 2022
+        </div>
+        <div class="tags">
+          <span class="tag">Public Health</span>
+          <span class="tag">Research</span>
+          <span class="tag">Data</span>
+        </div>
+        <ul>
+          <li>Focused on population health, research methods, and data-driven decision making</li>
+          <li>Strong foundation in research design and analytical thinking</li>
+        </ul>
+      </details>
     </div>
-    <div class="tags">
-      <span class="tag">Public Health</span>
-      <span class="tag">Research</span>
-      <span class="tag">Data</span>
-    </div>
-    <ul>
-      <li>Focused on population health, research methods, and data-driven decision making</li>
-      <li>Strong foundation in research design and analytical thinking</li>
-    </ul>
-  </details>
-</div>
+
     <!-- PROJECTS -->
     <div class="card">
       <h2>Projects</h2>
       <p><strong>Data Analysis Project</strong> — Exploratory analysis and visualization using Python & SQL. <a href="#">Code</a></p>
       <p><strong>Research Project</strong> — Applied statistical methods to real-world datasets. <a href="#">Code</a></p>
-      <p class="small">(You can replace these with class or personal projects anytime.)</p>
+      <p class="small">(Replace these with class or personal projects anytime.)</p>
     </div>
 
     <!-- EXPERIENCE -->
@@ -246,21 +262,33 @@
   </div>
 
   <script>
-  window.addEventListener("mousemove", (e) => {
-    if (Math.random() > 0.9) {
+    // Sparkle: throttled so it feels cute, not chaotic
+    let lastSpark = 0;
+
+    function spawnSpark(x, y) {
       const s = document.createElement("div");
       s.className = "sparkle";
       s.textContent = "HB";
-      s.style.left = e.clientX + "px";
-      s.style.top = e.clientY + "px";
+      s.style.left = x + "px";
+      s.style.top = y + "px";
       document.body.appendChild(s);
-      setTimeout(() => s.remove(), 700);
+      setTimeout(() => s.remove(), 900);
     }
-  });
-</script>
 
+    window.addEventListener("mousemove", (e) => {
+      const now = Date.now();
+      if (now - lastSpark < 35) return; // throttle
+      // random chance so it doesn't fire constantly
+      if (Math.random() > 0.82) {
+        lastSpark = now;
+        spawnSpark(e.clientX, e.clientY);
+      }
+    });
+
+    // Also sparkle on click/tap (more obvious on trackpads/phones)
+    window.addEventListener("click", (e) => {
+      spawnSpark(e.clientX, e.clientY);
+    });
+  </script>
 </body>
 </html>
-
-
-
