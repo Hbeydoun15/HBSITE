@@ -134,6 +134,41 @@
         inset 0 1px 0 rgba(255,255,255,.85);
     }
 
+    /* Photo grid (for Outside the Classroom) */
+    .photo-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .photo{
+      margin: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(59,130,246,.22);
+      background: rgba(255,255,255,.65);
+      box-shadow: 0 12px 30px rgba(59,130,246,.10);
+    }
+
+    .photo img{
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo figcaption{
+      padding: 10px 12px;
+      font-size: 13px;
+      color: rgba(15, 23, 42, .75);
+    }
+
+    @media (max-width: 720px){
+      .photo-grid{ grid-template-columns: 1fr; }
+      .photo img{ height: 200px; }
+    }
+
     /* Sparkle (HB) */
     .sparkle {
       position: fixed;
@@ -374,9 +409,8 @@
       </details>
     </div>
 
-  
 
-    <!-- SKILLS (moved inside wrap and placed before footer) -->
+    <!-- SKILLS -->
     <div class="card skills">
       <h2>Skills</h2>
 
@@ -417,37 +451,39 @@
       </div>
     </div>
 
+    <!-- Outside the Classroom (INSIDE the wrap + in the flow) -->
+    <div class="card">
+      <h2>Outside the Classroom</h2>
+      <p>
+        Outside of my academic and professional work, I enjoy staying active through hiking,
+        kayaking, biking, and strength training. I love traveling and exploring new places,
+        going to the theater, and spending time with friends—often over board games.
+      </p>
+      <p class="small">
+        I’m naturally extroverted and enjoy collaborative environments where ideas are shared
+        openly and work is driven by strong communication and teamwork.
+      </p>
+
+      <div class="photo-grid" aria-label="Personal photos">
+        <figure class="photo">
+          <img src="photo1.jpg" alt="Hassan hiking" loading="lazy" />
+          <figcaption>Hiking</figcaption>
+        </figure>
+
+        <figure class="photo">
+          <img src="photo2.jpg" alt="Traveling" loading="lazy" />
+          <figcaption>Travel</figcaption>
+        </figure>
+
+        <figure class="photo">
+          <img src="photo3.jpg" alt="Theater outing" loading="lazy" />
+          <figcaption>Theater</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <p class="small">© 2026 Hassan Beydoun</p>
   </div>
-<div class="card">
-  <h2>Outside the Classroom</h2>
-  <p>
-    Outside of my academic and professional work, I enjoy staying active through hiking,
-    kayaking, biking, and strength training. I love traveling and exploring new places,
-    going to the theater, and spending time with friends—often over board games.
-  </p>
-  <p class="small">
-    I’m naturally extroverted and enjoy collaborative environments where ideas are shared
-    openly and work is driven by strong communication and teamwork.
-  </p>
-<div class="photo-grid" aria-label="Personal photos">
-  <figure class="photo">
-    <img src="photo1.jpg" alt="Hassan hiking" loading="lazy" />
-    <figcaption>Hiking</figcaption>
-  </figure>
-
-  <figure class="photo">
-    <img src="photo2.jpg" alt="Traveling" loading="lazy" />
-    <figcaption>Travel</figcaption>
-  </figure>
-
-  <figure class="photo">
-    <img src="photo3.jpg" alt="Theater outing" loading="lazy" />
-    <figcaption>Theater</figcaption>
-  </figure>
-</div>
-
- <p class="small">© 2026 Hassan Beydoun</p>
-</div>
 
   <script>
     // Sparkle: throttled so it feels cute, not chaotic
