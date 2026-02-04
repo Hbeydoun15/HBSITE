@@ -17,16 +17,14 @@
     }
 
     body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  margin: 0;
-  color: var(--text);
-  background:
-    radial-gradient(1200px 600px at 20% -10%, #dbeafe 0%, transparent 60%),
-    radial-gradient(1000px 500px at 80% 0%, #e0f2fe 0%, transparent 55%),
-    linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
-}
-
-
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #dbeafe 0%, transparent 60%),
+        radial-gradient(1000px 500px at 80% 0%, #e0f2fe 0%, transparent 55%),
+        linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+    }
 
     .wrap { max-width: 960px; margin: 0 auto; padding: 56px 18px; }
 
@@ -34,44 +32,49 @@
     h2 { margin: 0 0 10px; }
 
     .subtitle { margin-top: 8px; color: var(--muted); }
-.tag:hover {
-  background: rgba(59,130,246,.08);
-  border-color: rgba(59,130,246,.35);
-}
 
     .card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px;
-  margin: 18px 0;
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
-  transition: box-shadow .25s ease, transform .25s ease;
-}
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin: 18px 0;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
 
-.card:hover {
-  box-shadow:
-    0 22px 70px rgba(15, 23, 42, .10),
-    0 0 0 1px rgba(59,130,246,.15);
-  transform: translateY(-2px);
-}
-.section-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(59,130,246,.25),
-    transparent
-  );
-  margin: 36px 0;
-}
-.hero {
-  box-shadow:
-    0 30px 80px rgba(59,130,246,.18),
-    0 0 0 1px rgba(59,130,246,.18);
-}
+    .card:hover {
+      box-shadow:
+        0 22px 70px rgba(15, 23, 42, .10),
+        0 0 0 1px rgba(59,130,246,.15);
+      transform: translateY(-2px);
+    }
 
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(59,130,246,.25),
+        transparent
+      );
+      margin: 36px 0;
+    }
+
+    .hero {
+      box-shadow:
+        0 30px 80px rgba(59,130,246,.18),
+        0 0 0 1px rgba(59,130,246,.18);
+    }
+
+    /* Make the Skills card pop (theme match) */
+    .card.skills {
+      border-color: rgba(59,130,246,.35);
+      box-shadow:
+        0 28px 80px rgba(59,130,246,.18),
+        0 0 0 1px rgba(59,130,246,.18);
+    }
 
     .row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
 
@@ -105,31 +108,48 @@
     summary::-webkit-details-marker { display:none; }
 
     .tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+
+    /* Upgraded themed chips */
     .tag {
-      border: 1px solid var(--border);
+      border: 1px solid rgba(59,130,246,.25);
       border-radius: 999px;
-      padding: 6px 10px;
+      padding: 8px 14px;
       font-size: 13px;
-      color: var(--muted);
+      color: #1e3a8a;
+      background: linear-gradient(
+        180deg,
+        rgba(219,234,254,.65),
+        rgba(239,246,255,.9)
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.7),
+        0 6px 14px rgba(59,130,246,.12);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 26px rgba(59,130,246,.25),
+        inset 0 1px 0 rgba(255,255,255,.85);
     }
 
     /* Sparkle (HB) */
     .sparkle {
-  position: fixed;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  font-weight: 900;
-  color: #2563eb; /* deeper blue */
-  text-shadow:
-    0 8px 18px rgba(37, 99, 235, .35),
-    0 0 6px rgba(59,130,246,.25);
-  letter-spacing: -0.5px;
-  user-select: none;
-  animation: pop .8s ease forwards;
-  will-change: transform, opacity;
-}
-
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: 900;
+      color: #2563eb; /* deeper blue */
+      text-shadow:
+        0 8px 18px rgba(37, 99, 235, .35),
+        0 0 6px rgba(59,130,246,.25);
+      letter-spacing: -0.5px;
+      user-select: none;
+      animation: pop .8s ease forwards;
+      will-change: transform, opacity;
+    }
 
     @keyframes pop {
       0% {
@@ -232,82 +252,77 @@
       </details>
     </div>
 
+    <!-- PROJECTS -->
+    <div class="card">
+      <h2>Projects</h2>
 
-   <!-- PROJECTS -->
-<div class="card">
-  <h2>Projects</h2>
+      <details>
+        <summary>Applied Research & Data Analysis Internship — U-M Political Science (Winter 2026)</summary>
+        <div class="small">
+          University of Michigan — LSA Department of Political Science • Ann Arbor, MI<br />
+          Role: Applied Research and Data Analysis Intern • Jan 2026 – Apr 2026
+        </div>
 
-  <details>
-    <summary>Applied Research & Data Analysis Internship — U-M Political Science (Winter 2026)</summary>
-    <div class="small">
-      University of Michigan — LSA Department of Political Science • Ann Arbor, MI<br />
-      Role: Applied Research and Data Analysis Intern • Jan 2026 – Apr 2026
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Survey Data</span>
+          <span class="tag">Text Analysis</span>
+          <span class="tag">Visualization</span>
+          <span class="tag">Web Scraping</span>
+        </div>
+
+        <ul>
+          <li>Cleaned, preprocessed, and managed survey data from ~3,000 respondents from Muslim communities in Thailand.</li>
+          <li>Performed text analysis on open-ended responses to identify themes related to religious identity, political recognition, and patronage.</li>
+          <li>Built Python workflows for data manipulation, aggregation, and transformation to prepare analysis-ready datasets.</li>
+          <li>Created visualizations to communicate findings to the principal investigator and support research decisions.</li>
+          <li>Assisted with data scraping/ingestion workflows to automate collection and structuring of survey data.</li>
+          <li>Collaborated through regular in-person meetings to refine methods, interpret results, and iterate based on feedback.</li>
+        </ul>
+
+        <div class="row">
+          <a class="pill" href="https://lsa.umich.edu/polisci" target="_blank" rel="noreferrer">Department</a>
+          <a class="pill" href="#" title="Add when you have a public repo or write-up">Code / Write-up (soon)</a>
+        </div>
+
+        <p class="small">
+          Outcome: (Add 1–2 measurable results later — e.g., “delivered X visualizations,” “built reusable pipeline,” etc.)
+        </p>
+      </details>
+
+      <details>
+        <summary>Program Assistant Internship — U-M Office of the Provost (Summer 2025)</summary>
+        <div class="small">
+          University of Michigan — Office of the Provost • Ann Arbor, MI<br />
+          Role: Program Assistant • May 2025 – Aug 2025
+        </div>
+
+        <div class="tags">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Data Mining</span>
+          <span class="tag">Visualization</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">Communication</span>
+        </div>
+
+        <ul>
+          <li>Created and managed travel safety and identity abroad materials (videos, slide decks, PDFs) for students.</li>
+          <li>Published and updated content on the Global Michigan website (WordPress).</li>
+          <li>Supported pre-departure orientations by developing travel health and safety resources and destination risk materials.</li>
+          <li>Identified patterns in data via data mining and communicated insights through visualizations to inform content decisions.</li>
+          <li>Collaborated with the GET team through weekly check-ins and ongoing project support.</li>
+        </ul>
+
+        <div class="row">
+          <a class="pill" href="https://provost.umich.edu/" target="_blank" rel="noreferrer">Office of the Provost</a>
+          <a class="pill" href="https://global.umich.edu/" target="_blank" rel="noreferrer">Global Michigan</a>
+        </div>
+
+        <p class="small">
+          Outcome: (Add a measurable line later — e.g., “published X resources,” “created X videos,” “built a data-driven content pipeline,” etc.)
+        </p>
+      </details>
     </div>
-
-    <div class="tags">
-      <span class="tag">Python</span>
-      <span class="tag">Survey Data</span>
-      <span class="tag">Text Analysis</span>
-      <span class="tag">Visualization</span>
-      <span class="tag">Web Scraping</span>
-    </div>
-
-    <ul>
-      <li>Cleaned, preprocessed, and managed survey data from ~3,000 respondents from Muslim communities in Thailand.</li>
-      <li>Performed text analysis on open-ended responses to identify themes related to religious identity, political recognition, and patronage.</li>
-      <li>Built Python workflows for data manipulation, aggregation, and transformation to prepare analysis-ready datasets.</li>
-      <li>Created visualizations to communicate findings to the principal investigator and support research decisions.</li>
-      <li>Assisted with data scraping/ingestion workflows to automate collection and structuring of survey data.</li>
-      <li>Collaborated through regular in-person meetings to refine methods, interpret results, and iterate based on feedback.</li>
-    </ul>
-
-    <div class="row">
-      <a class="pill" href="https://lsa.umich.edu/polisci" target="_blank" rel="noreferrer">Department</a>
-      <a class="pill" href="#" title="Add when you have a public repo or write-up">Code / Write-up (soon)</a>
-    </div>
-
-    <p class="small">
-      Outcome: (Add 1–2 measurable results later — e.g., “delivered X visualizations,” “built reusable pipeline,” etc.)
-    </p>
-  </details>
-
-  <details>
-  <summary>Program Assistant Internship — U-M Office of the Provost (Summer 2025)</summary>
-  <div class="small">
-    University of Michigan — Office of the Provost • Ann Arbor, MI<br />
-    Role: Program Assistant • May 2025 – Aug 2025
-  </div>
-
-  <div class="tags">
-    <span class="tag">Content Strategy</span>
-    <span class="tag">Data Mining</span>
-    <span class="tag">Visualization</span>
-    <span class="tag">WordPress</span>
-    <span class="tag">Communication</span>
-  </div>
-
-  <ul>
-    <li>Created and managed travel safety and identity abroad materials (videos, slide decks, PDFs) for students.</li>
-    <li>Published and updated content on the Global Michigan website (WordPress).</li>
-    <li>Supported pre-departure orientations by developing travel health and safety resources and destination risk materials.</li>
-    <li>Identified patterns in data via data mining and communicated insights through visualizations to inform content decisions.</li>
-    <li>Collaborated with the GET team through weekly check-ins and ongoing project support.</li>
-  </ul>
-
-  <div class="row">
-    <a class="pill" href="https://provost.umich.edu/" target="_blank" rel="noreferrer">Office of the Provost</a>
-    <a class="pill" href="https://global.umich.edu/" target="_blank" rel="noreferrer">Global Michigan</a>
-  </div>
-
-  <p class="small">
-    Outcome: (Add a measurable line later — e.g., “published X resources,” “created X videos,” “built a data-driven content pipeline,” etc.)
-  </p>
-</details>
-
-
-</div>
-
-
 
     <!-- EXPERIENCE -->
     <div class="card">
@@ -359,6 +374,49 @@
       </details>
     </div>
 
+    <div class="section-divider"></div>
+
+    <!-- SKILLS (moved inside wrap and placed before footer) -->
+    <div class="card skills">
+      <h2>Skills</h2>
+
+      <p class="small" style="margin-bottom:14px;">
+        Core technical and analytical skills developed through coursework, research, and applied internships.
+      </p>
+
+      <p class="small" style="margin-top:12px; font-weight:600;">Programming & Tools</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">R</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Git / GitHub</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+      </div>
+
+      <p class="small" style="margin-top:14px; font-weight:600;">Analysis & Methods</p>
+      <div class="tags">
+        <span class="tag">Data Cleaning</span>
+        <span class="tag">Data Manipulation</span>
+        <span class="tag">Exploratory Data Analysis (EDA)</span>
+        <span class="tag">Statistical Analysis</span>
+        <span class="tag">Text Analysis</span>
+        <span class="tag">Survey Data</span>
+      </div>
+
+      <p class="small" style="margin-top:14px; font-weight:600;">Visualization & Web</p>
+      <div class="tags">
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Dashboards</span>
+        <span class="tag">Web Scraping</span>
+        <span class="tag">Data Ingestion</span>
+        <span class="tag">WordPress</span>
+        <span class="tag">Markdown</span>
+      </div>
+    </div>
+
     <p class="small">© 2026 Hassan Beydoun</p>
   </div>
 
@@ -391,46 +449,5 @@
       spawnSpark(e.clientX, e.clientY);
     });
   </script>
- <!-- SKILLS -->
-<div class="card skills">
-  <h2>Skills</h2>
-
-  <p class="small" style="margin-bottom:14px;">
-    Core technical and analytical skills developed through coursework, research, and applied internships.
-  </p>
-
-  <p class="small" style="margin-top:12px; font-weight:600;">Programming & Tools</p>
-  <div class="tags">
-    <span class="tag">Python</span>
-    <span class="tag">R</span>
-    <span class="tag">SQL</span>
-    <span class="tag">Git / GitHub</span>
-    <span class="tag">Pandas</span>
-    <span class="tag">NumPy</span>
-  </div>
-
-  <p class="small" style="margin-top:14px; font-weight:600;">Analysis & Methods</p>
-  <div class="tags">
-    <span class="tag">Data Cleaning</span>
-    <span class="tag">Data Manipulation</span>
-    <span class="tag">Exploratory Data Analysis (EDA)</span>
-    <span class="tag">Statistical Analysis</span>
-    <span class="tag">Text Analysis</span>
-    <span class="tag">Survey Data</span>
-  </div>
-
-  <p class="small" style="margin-top:14px; font-weight:600;">Visualization & Web</p>
-  <div class="tags">
-    <span class="tag">Data Visualization</span>
-    <span class="tag">Matplotlib</span>
-    <span class="tag">Seaborn</span>
-    <span class="tag">Dashboards</span>
-    <span class="tag">Web Scraping</span>
-    <span class="tag">Data Ingestion</span>
-    <span class="tag">WordPress</span>
-    <span class="tag">Markdown</span>
-  </div>
-</div>
 </body>
 </html>
-
