@@ -29,7 +29,7 @@
     /* tighter wrap so more fits “above the fold” */
     .wrap { max-width: 1100px; margin: 0 auto; padding: 26px 16px; }
 
-    h1 { margin: 0; font-size: 34px; letter-spacing: -0.5px; }
+    h1 { margin: 0; font-size: 34px; letter-spacing: -0.5px; line-height: 1.05; }
     h2 { margin: 0 0 8px; }
 
     .subtitle { margin-top: 8px; color: var(--muted); }
@@ -155,7 +155,7 @@
       color: rgba(15, 23, 42, .75);
     }
 
-    /* --- NEW: Two-column layout --- */
+    /* --- Two-column layout --- */
     .layout{
       display: grid;
       grid-template-columns: 340px 1fr;
@@ -163,27 +163,30 @@
       align-items: start;
     }
 
-    /* Left column stays visible while right scrolls */
     .sidebar{
       position: sticky;
       top: 18px;
     }
 
-    /* Hero becomes compact in sidebar */
+    /* HERO: make photo bigger + align to top-left of the hero area */
     .hero{
       display: grid;
-      grid-template-columns: 86px 1fr;
+      grid-template-columns: 112px 1fr; /* wider photo column */
       gap: 14px;
-      align-items: center;
+      align-items: start; /* key: not vertically centered */
     }
 
     .hero img{
-      width: 86px;
-      height: 86px;
+      width: 112px;
+      height: 112px;
       border-radius: 999px;
       object-fit: cover;
+      object-position: center top; /* helps if head is near the top of the image */
       border: 1px solid rgba(15,23,42,.12);
       box-shadow: 0 12px 30px rgba(15,23,42,.12);
+      margin-top: 2px; /* subtle nudge to “sit” better */
+      justify-self: start;
+      align-self: start;
     }
 
     /* Mobile: stack */
@@ -192,6 +195,8 @@
       .sidebar{ position: static; }
       .photo-grid{ grid-template-columns: 1fr; }
       .photo img{ height: 200px; }
+      .hero{ grid-template-columns: 96px 1fr; }
+      .hero img{ width: 96px; height: 96px; }
     }
 
     /* Sparkle (HB) */
@@ -261,41 +266,6 @@
             where I can work with large datasets, apply statistical methods, and communicate insights.
           </p>
           <p class="small">Open to internships and full-time positions • Summer 2026 and beyond</p>
-        </div>
-
-        <!-- Outside the Classroom (collapsed by default to save space) -->
-        <div class="card">
-          <details>
-            <summary>Outside the Classroom</summary>
-
-            <p class="small" style="margin-top:10px;">
-              Outside of my academic and professional work, I enjoy staying active through hiking,
-              kayaking, biking, and strength training. I love traveling and exploring new places,
-              going to the theater, and spending time with friends—often over board games.
-            </p>
-
-            <p class="small">
-              I’m naturally extroverted and enjoy collaborative environments where ideas are shared
-              openly and work is driven by strong communication and teamwork.
-            </p>
-
-            <div class="photo-grid" aria-label="Personal photos">
-              <figure class="photo">
-                <img src="photo1.jpg" alt="Hassan hiking" loading="lazy" />
-                <figcaption>Fall</figcaption>
-              </figure>
-
-              <figure class="photo">
-                <img src="photo2.jpg" alt="Traveling" loading="lazy" />
-                <figcaption>Winter</figcaption>
-              </figure>
-
-              <figure class="photo">
-                <img src="photo3.jpg" alt="Theater outing" loading="lazy" />
-                <figcaption>Summer</figcaption>
-              </figure>
-            </div>
-          </details>
         </div>
 
       </aside>
@@ -464,6 +434,39 @@
           </details>
         </div>
 
+        <!-- 1) SWITCHED ORDER: Outside the Classroom now comes BEFORE Skills -->
+        <div class="card">
+          <h2>Outside the Classroom</h2>
+
+          <p class="small" style="margin-top:6px;">
+            Outside of my academic and professional work, I enjoy staying active through hiking,
+            kayaking, biking, and strength training. I love traveling and exploring new places,
+            going to the theater, and spending time with friends—often over board games.
+          </p>
+
+          <p class="small">
+            I’m naturally extroverted and enjoy collaborative environments where ideas are shared
+            openly and work is driven by strong communication and teamwork.
+          </p>
+
+          <div class="photo-grid" aria-label="Personal photos">
+            <figure class="photo">
+              <img src="photo1.jpg" alt="Hassan hiking" loading="lazy" />
+              <figcaption>Fall</figcaption>
+            </figure>
+
+            <figure class="photo">
+              <img src="photo2.jpg" alt="Traveling" loading="lazy" />
+              <figcaption>Winter</figcaption>
+            </figure>
+
+            <figure class="photo">
+              <img src="photo3.jpg" alt="Theater outing" loading="lazy" />
+              <figcaption>Summer</figcaption>
+            </figure>
+          </div>
+        </div>
+
         <!-- SKILLS -->
         <div class="card skills">
           <h2>Skills</h2>
@@ -512,7 +515,9 @@
   </div>
 
   <script>
-    // Sparkle: throttled so it feels cute, not chaotic
+    // 3) Sparkle: MUCH less frequent
+    // - higher throttle (time gap)
+    // - lower chance (random probability)
     let lastSpark = 0;
 
     function spawnSpark(x, y) {
@@ -527,16 +532,17 @@
 
     window.addEventListener("mousemove", (e) => {
       const now = Date.now();
-      if (now - lastSpark < 35) return; // throttle
-      // random chance so it doesn't fire constantly
-      if (Math.random() > 0.82) {
-        lastSpark = now;
-        spawnSpark(e.clientX, e.clientY);
-      }
+      if (now - lastSpark < 160) return;     // was 35ms; now slower
+      if (Math.random() > 0.96) return;      // only ~4% of eligible moves spawn
+      lastSpark = now;
+      spawnSpark(e.clientX, e.clientY);
     });
 
-    // Also sparkle on click/tap (more obvious on trackpads/phones)
+    // Click/tap: keep it (feels intentional), but also lightly rate-limit
     window.addEventListener("click", (e) => {
+      const now = Date.now();
+      if (now - lastSpark < 120) return;
+      lastSpark = now;
       spawnSpark(e.clientX, e.clientY);
     });
   </script>
