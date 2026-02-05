@@ -168,12 +168,12 @@
       top: 18px;
     }
 
-    /* HERO: make photo bigger + align to top-left of the hero area */
+    /* HERO: bigger photo + aligned to top-left */
     .hero{
       display: grid;
-      grid-template-columns: 112px 1fr; /* wider photo column */
+      grid-template-columns: 112px 1fr;
       gap: 14px;
-      align-items: start; /* key: not vertically centered */
+      align-items: start;
     }
 
     .hero img{
@@ -181,10 +181,10 @@
       height: 112px;
       border-radius: 999px;
       object-fit: cover;
-      object-position: center top; /* helps if head is near the top of the image */
+      object-position: center top;
       border: 1px solid rgba(15,23,42,.12);
       box-shadow: 0 12px 30px rgba(15,23,42,.12);
-      margin-top: 2px; /* subtle nudge to “sit” better */
+      margin-top: 2px;
       justify-self: start;
       align-self: start;
     }
@@ -266,6 +266,47 @@
             where I can work with large datasets, apply statistical methods, and communicate insights.
           </p>
           <p class="small">Open to internships and full-time positions • Summer 2026 and beyond</p>
+        </div>
+
+        <!-- ✅ SKILLS MOVED TO LEFT UNDER ABOUT -->
+        <div class="card skills">
+          <h2>Skills</h2>
+
+          <p class="small" style="margin-bottom:12px;">
+            Core technical and analytical skills developed through coursework, research, and applied internships.
+          </p>
+
+          <p class="small" style="margin-top:10px; font-weight:600;">Programming & Tools</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+          </div>
+
+          <p class="small" style="margin-top:12px; font-weight:600;">Analysis & Methods</p>
+          <div class="tags">
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Data Manipulation</span>
+            <span class="tag">Exploratory Data Analysis (EDA)</span>
+            <span class="tag">Statistical Analysis</span>
+            <span class="tag">Text Analysis</span>
+            <span class="tag">Survey Data</span>
+          </div>
+
+          <p class="small" style="margin-top:12px; font-weight:600;">Visualization & Web</p>
+          <div class="tags">
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Seaborn</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">Web Scraping</span>
+            <span class="tag">Data Ingestion</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">Markdown</span>
+          </div>
         </div>
 
       </aside>
@@ -434,7 +475,7 @@
           </details>
         </div>
 
-        <!-- 1) SWITCHED ORDER: Outside the Classroom now comes BEFORE Skills -->
+        <!-- Outside the Classroom stays on the right -->
         <div class="card">
           <h2>Outside the Classroom</h2>
 
@@ -467,47 +508,6 @@
           </div>
         </div>
 
-        <!-- SKILLS -->
-        <div class="card skills">
-          <h2>Skills</h2>
-
-          <p class="small" style="margin-bottom:12px;">
-            Core technical and analytical skills developed through coursework, research, and applied internships.
-          </p>
-
-          <p class="small" style="margin-top:10px; font-weight:600;">Programming & Tools</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">R</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Git / GitHub</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">NumPy</span>
-          </div>
-
-          <p class="small" style="margin-top:12px; font-weight:600;">Analysis & Methods</p>
-          <div class="tags">
-            <span class="tag">Data Cleaning</span>
-            <span class="tag">Data Manipulation</span>
-            <span class="tag">Exploratory Data Analysis (EDA)</span>
-            <span class="tag">Statistical Analysis</span>
-            <span class="tag">Text Analysis</span>
-            <span class="tag">Survey Data</span>
-          </div>
-
-          <p class="small" style="margin-top:12px; font-weight:600;">Visualization & Web</p>
-          <div class="tags">
-            <span class="tag">Data Visualization</span>
-            <span class="tag">Matplotlib</span>
-            <span class="tag">Seaborn</span>
-            <span class="tag">Dashboards</span>
-            <span class="tag">Web Scraping</span>
-            <span class="tag">Data Ingestion</span>
-            <span class="tag">WordPress</span>
-            <span class="tag">Markdown</span>
-          </div>
-        </div>
-
         <p class="small">© 2026 Hassan Beydoun</p>
       </main>
 
@@ -515,9 +515,7 @@
   </div>
 
   <script>
-    // 3) Sparkle: MUCH less frequent
-    // - higher throttle (time gap)
-    // - lower chance (random probability)
+    // Sparkle: less frequent
     let lastSpark = 0;
 
     function spawnSpark(x, y) {
@@ -532,13 +530,12 @@
 
     window.addEventListener("mousemove", (e) => {
       const now = Date.now();
-      if (now - lastSpark < 160) return;     // was 35ms; now slower
-      if (Math.random() > 0.96) return;      // only ~4% of eligible moves spawn
+      if (now - lastSpark < 160) return; // slower
+      if (Math.random() > 0.96) return;  // lower chance
       lastSpark = now;
       spawnSpark(e.clientX, e.clientY);
     });
 
-    // Click/tap: keep it (feels intentional), but also lightly rate-limit
     window.addEventListener("click", (e) => {
       const now = Date.now();
       if (now - lastSpark < 120) return;
