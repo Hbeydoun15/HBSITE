@@ -26,18 +26,19 @@
         linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
     }
 
-    .wrap { max-width: 960px; margin: 0 auto; padding: 56px 18px; }
+    /* tighter wrap so more fits “above the fold” */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 26px 16px; }
 
-    h1 { margin: 0; font-size: 40px; letter-spacing: -0.5px; }
-    h2 { margin: 0 0 10px; }
+    h1 { margin: 0; font-size: 34px; letter-spacing: -0.5px; }
+    h2 { margin: 0 0 8px; }
 
     .subtitle { margin-top: 8px; color: var(--muted); }
 
     .card {
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 22px;
-      margin: 18px 0;
+      padding: 18px;
+      margin: 12px 0;
       background: var(--card);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
@@ -49,17 +50,6 @@
         0 22px 70px rgba(15, 23, 42, .10),
         0 0 0 1px rgba(59,130,246,.15);
       transform: translateY(-2px);
-    }
-
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(59,130,246,.25),
-        transparent
-      );
-      margin: 36px 0;
     }
 
     .hero {
@@ -76,33 +66,34 @@
         0 0 0 1px rgba(59,130,246,.18);
     }
 
-    .row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    .row { display:flex; gap:8px; flex-wrap:wrap; margin-top: 12px; }
 
     .pill {
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 10px 14px;
+      padding: 8px 12px;
       display:inline-block;
       text-decoration:none;
       color: var(--text);
       background: rgba(255,255,255,.7);
       transition: transform .15s ease, box-shadow .15s ease;
       box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
+      font-size: 14px;
     }
     .pill:hover {
       transform: translateY(-2px) rotate(-0.3deg);
       box-shadow: 0 14px 30px rgba(15,23,42,.10);
     }
 
-    .small { font-size: 14px; color: var(--muted); margin-top: 6px; }
+    .small { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
     /* Accordion */
     details {
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 14px;
+      padding: 12px;
       background: rgba(255,255,255,.6);
-      margin-top: 12px;
+      margin-top: 10px;
     }
     summary { cursor: pointer; font-weight: 700; }
     summary::-webkit-details-marker { display:none; }
@@ -137,9 +128,9 @@
     /* Photo grid (for Outside the Classroom) */
     .photo-grid{
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .photo{
@@ -153,7 +144,7 @@
 
     .photo img{
       width: 100%;
-      height: 160px;
+      height: 140px;
       object-fit: cover;
       display: block;
     }
@@ -164,7 +155,41 @@
       color: rgba(15, 23, 42, .75);
     }
 
-    @media (max-width: 720px){
+    /* --- NEW: Two-column layout --- */
+    .layout{
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    /* Left column stays visible while right scrolls */
+    .sidebar{
+      position: sticky;
+      top: 18px;
+    }
+
+    /* Hero becomes compact in sidebar */
+    .hero{
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero img{
+      width: 86px;
+      height: 86px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid rgba(15,23,42,.12);
+      box-shadow: 0 12px 30px rgba(15,23,42,.12);
+    }
+
+    /* Mobile: stack */
+    @media (max-width: 900px){
+      .layout{ grid-template-columns: 1fr; }
+      .sidebar{ position: static; }
       .photo-grid{ grid-template-columns: 1fr; }
       .photo img{ height: 200px; }
     }
@@ -176,7 +201,7 @@
       transform: translate(-50%, -50%);
       font-size: 14px;
       font-weight: 900;
-      color: #2563eb; /* deeper blue */
+      color: #2563eb;
       text-shadow:
         0 8px 18px rgba(37, 99, 235, .35),
         0 0 6px rgba(59,130,246,.25);
@@ -192,9 +217,7 @@
         transform: translate(-50%, -50%) scale(0.7);
         filter: blur(0px);
       }
-      18% {
-        opacity: 1;
-      }
+      18% { opacity: 1; }
       100% {
         opacity: 0;
         transform: translate(-50%, -88%) scale(1.65);
@@ -206,284 +229,286 @@
 
 <body>
   <div class="wrap">
+    <div class="layout">
 
-    <!-- HERO -->
-    <div class="card hero" style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
-      <img
-        src="me.jpg"
-        alt="Photo of Hassan Beydoun"
-        style="
-          width:130px;
-          height:130px;
-          border-radius:999px;
-          object-fit:cover;
-          border:1px solid rgba(15,23,42,.12);
-          box-shadow:0 12px 30px rgba(15,23,42,.12);
-        "
-      />
+      <!-- LEFT COLUMN -->
+      <aside class="sidebar">
 
-      <div>
-        <h1>Hassan Beydoun</h1>
-        <div class="subtitle">
-          Big Data Analytics • University of Michigan • Ann Arbor, MI
+        <!-- HERO -->
+        <div class="card hero">
+          <img src="me.jpg" alt="Photo of Hassan Beydoun" />
+
+          <div>
+            <h1>Hassan Beydoun</h1>
+            <div class="subtitle">Big Data Analytics • University of Michigan • Ann Arbor, MI</div>
+
+            <div class="row">
+              <a class="pill" href="mailto:Hbey@umich.edu">Email</a>
+              <a class="pill" href="tel:+13136148225">Call</a>
+              <a class="pill" href="https://linkedin.com/in/hassan-beydoun-a3019a185/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="pill" href="https://github.com/hbeydoun15" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="pill" href="resume.pdf">Resume</a>
+            </div>
+          </div>
         </div>
 
-        <div class="row">
-          <a class="pill" href="mailto:Hbey@umich.edu">Email</a>
-          <a class="pill" href="tel:+13136148225">Call</a>
-          <a class="pill" href="https://linkedin.com/in/hassan-beydoun-a3019a185/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill" href="https://github.com/hbeydoun15" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="pill" href="resume.pdf">Resume (PDF)</a>
+        <!-- ABOUT -->
+        <div class="card">
+          <h2>About</h2>
+          <p>
+            I’m a Master’s student at the University of Michigan studying Big Data Analytics,
+            graduating in May 2026. I’m interested in data analyst and analytics-focused roles
+            where I can work with large datasets, apply statistical methods, and communicate insights.
+          </p>
+          <p class="small">Open to internships and full-time positions • Summer 2026 and beyond</p>
         </div>
-      </div>
+
+        <!-- Outside the Classroom (collapsed by default to save space) -->
+        <div class="card">
+          <details>
+            <summary>Outside the Classroom</summary>
+
+            <p class="small" style="margin-top:10px;">
+              Outside of my academic and professional work, I enjoy staying active through hiking,
+              kayaking, biking, and strength training. I love traveling and exploring new places,
+              going to the theater, and spending time with friends—often over board games.
+            </p>
+
+            <p class="small">
+              I’m naturally extroverted and enjoy collaborative environments where ideas are shared
+              openly and work is driven by strong communication and teamwork.
+            </p>
+
+            <div class="photo-grid" aria-label="Personal photos">
+              <figure class="photo">
+                <img src="photo1.jpg" alt="Hassan hiking" loading="lazy" />
+                <figcaption>Fall</figcaption>
+              </figure>
+
+              <figure class="photo">
+                <img src="photo2.jpg" alt="Traveling" loading="lazy" />
+                <figcaption>Winter</figcaption>
+              </figure>
+
+              <figure class="photo">
+                <img src="photo3.jpg" alt="Theater outing" loading="lazy" />
+                <figcaption>Summer</figcaption>
+              </figure>
+            </div>
+          </details>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT COLUMN -->
+      <main class="main">
+
+        <!-- EDUCATION -->
+        <div class="card">
+          <h2>Education</h2>
+
+          <details>
+            <summary>University of Michigan — Ann Arbor</summary>
+            <div class="small">
+              Master of Science in Information (MSI), Data Science & Analytics<br />
+              Expected May 2026
+            </div>
+            <div class="tags">
+              <span class="tag">Big Data</span>
+              <span class="tag">Analytics</span>
+              <span class="tag">Statistics</span>
+            </div>
+            <ul>
+              <li>Relevant coursework: Data Analysis, Machine Learning, Statistics, Data Visualization</li>
+              <li>Tools: Python, R, SQL, Git, Pandas, NumPy</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>University of Michigan — Ann Arbor</summary>
+            <div class="small">
+              Bachelor of Science in Public Health (BSPH)<br />
+              Completed May 2022
+            </div>
+            <div class="tags">
+              <span class="tag">Public Health</span>
+              <span class="tag">Research</span>
+              <span class="tag">Data</span>
+            </div>
+            <ul>
+              <li>Focused on population health, research methods, and data-driven decision making</li>
+              <li>Strong foundation in research design and analytical thinking</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="card">
+          <h2>Projects</h2>
+
+          <details>
+            <summary>Applied Research & Data Analysis Internship — U-M Political Science (Winter 2026)</summary>
+            <div class="small">
+              University of Michigan — LSA Department of Political Science • Ann Arbor, MI<br />
+              Role: Applied Research and Data Analysis Intern • Jan 2026 – Apr 2026
+            </div>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Survey Data</span>
+              <span class="tag">Text Analysis</span>
+              <span class="tag">Visualization</span>
+              <span class="tag">Web Scraping</span>
+            </div>
+
+            <ul>
+              <li>Cleaned, preprocessed, and managed survey data from ~3,000 respondents from Muslim communities in Thailand.</li>
+              <li>Performed text analysis on open-ended responses to identify themes related to religious identity, political recognition, and patronage.</li>
+              <li>Built Python workflows for data manipulation, aggregation, and transformation to prepare analysis-ready datasets.</li>
+              <li>Created visualizations to communicate findings to the principal investigator and support research decisions.</li>
+              <li>Assisted with data scraping/ingestion workflows to automate collection and structuring of survey data.</li>
+              <li>Collaborated through regular in-person meetings to refine methods, interpret results, and iterate based on feedback.</li>
+            </ul>
+
+            <div class="row">
+              <a class="pill" href="https://lsa.umich.edu/polisci" target="_blank" rel="noreferrer">Department</a>
+              <a class="pill" href="#" title="Add when you have a public repo or write-up">Code / Write-up (soon)</a>
+            </div>
+
+            <p class="small">
+              Outcome: (Add 1–2 measurable results later — e.g., “delivered X visualizations,” “built reusable pipeline,” etc.)
+            </p>
+          </details>
+
+          <details>
+            <summary>Program Assistant Internship — U-M Office of the Provost (Summer 2025)</summary>
+            <div class="small">
+              University of Michigan — Office of the Provost • Ann Arbor, MI<br />
+              Role: Program Assistant • May 2025 – Aug 2025
+            </div>
+
+            <div class="tags">
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Data Mining</span>
+              <span class="tag">Visualization</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">Communication</span>
+            </div>
+
+            <ul>
+              <li>Created and managed travel safety and identity abroad materials (videos, slide decks, PDFs) for students.</li>
+              <li>Published and updated content on the Global Michigan website (WordPress).</li>
+              <li>Supported pre-departure orientations by developing travel health and safety resources and destination risk materials.</li>
+              <li>Identified patterns in data via data mining and communicated insights through visualizations to inform content decisions.</li>
+              <li>Collaborated with the GET team through weekly check-ins and ongoing project support.</li>
+            </ul>
+
+            <div class="row">
+              <a class="pill" href="https://provost.umich.edu/" target="_blank" rel="noreferrer">Office of the Provost</a>
+              <a class="pill" href="https://global.umich.edu/" target="_blank" rel="noreferrer">Global Michigan</a>
+            </div>
+
+            <p class="small">
+              Outcome: (Add a measurable line later — e.g., “published X resources,” “created X videos,” “built a data-driven content pipeline,” etc.)
+            </p>
+          </details>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="card">
+          <h2>Experience</h2>
+
+          <details>
+            <summary>Program Assistant — Office of the Provost (U-M)</summary>
+            <div class="small">Aug 2024 – Aug 2025 • Ann Arbor, MI</div>
+            <div class="tags">
+              <span class="tag">Content</span>
+              <span class="tag">Communication</span>
+              <span class="tag">Projects</span>
+            </div>
+            <ul>
+              <li>Published and maintained travel and identity abroad content using WordPress.</li>
+              <li>Created educational materials including videos, slide decks, and PDFs.</li>
+              <li>Produced a five-part video series covering the student travel lifecycle.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Foreign Expert — Mahidol University</summary>
+            <div class="small">Dec 2022 – Jul 2024 • Bangkok, Thailand</div>
+            <div class="tags">
+              <span class="tag">Research</span>
+              <span class="tag">Fieldwork</span>
+              <span class="tag">Public Health</span>
+            </div>
+            <ul>
+              <li>Supported collaborations with universities across Asia and globally.</li>
+              <li>Conducted field research and contributed to targeted public health solutions.</li>
+              <li>Prepared reports and supported committee initiatives.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Career Support Specialist — University of Michigan</summary>
+            <div class="small">Sep 2021 – May 2022 • Ann Arbor, MI</div>
+            <div class="tags">
+              <span class="tag">Career</span>
+              <span class="tag">Workshops</span>
+              <span class="tag">Web</span>
+            </div>
+            <ul>
+              <li>Guided students through resumes, cover letters, and job applications.</li>
+              <li>Developed a career resources website with templates and opportunities.</li>
+              <li>Facilitated resume and cover letter workshops.</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="card skills">
+          <h2>Skills</h2>
+
+          <p class="small" style="margin-bottom:12px;">
+            Core technical and analytical skills developed through coursework, research, and applied internships.
+          </p>
+
+          <p class="small" style="margin-top:10px; font-weight:600;">Programming & Tools</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+          </div>
+
+          <p class="small" style="margin-top:12px; font-weight:600;">Analysis & Methods</p>
+          <div class="tags">
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Data Manipulation</span>
+            <span class="tag">Exploratory Data Analysis (EDA)</span>
+            <span class="tag">Statistical Analysis</span>
+            <span class="tag">Text Analysis</span>
+            <span class="tag">Survey Data</span>
+          </div>
+
+          <p class="small" style="margin-top:12px; font-weight:600;">Visualization & Web</p>
+          <div class="tags">
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Seaborn</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">Web Scraping</span>
+            <span class="tag">Data Ingestion</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">Markdown</span>
+          </div>
+        </div>
+
+        <p class="small">© 2026 Hassan Beydoun</p>
+      </main>
+
     </div>
-
-    <!-- ABOUT -->
-    <div class="card">
-      <h2>About</h2>
-      <p>
-        I’m a Master’s student at the University of Michigan studying Big Data Analytics,
-        graduating in May 2026. I’m interested in data analyst and analytics-focused roles
-        where I can work with large datasets, apply statistical methods, and communicate insights.
-      </p>
-      <p class="small">Open to internships and full-time positions • Summer 2026 and beyond</p>
-    </div>
-
-    <!-- EDUCATION -->
-    <div class="card">
-      <h2>Education</h2>
-
-      <details>
-        <summary>University of Michigan — Ann Arbor</summary>
-        <div class="small">
-          Master of Science in Information (MSI), Data Science & Analytics<br />
-          Expected May 2026
-        </div>
-        <div class="tags">
-          <span class="tag">Big Data</span>
-          <span class="tag">Analytics</span>
-          <span class="tag">Statistics</span>
-        </div>
-        <ul>
-          <li>Relevant coursework: Data Analysis, Machine Learning, Statistics, Data Visualization</li>
-          <li>Tools: Python, R, SQL, Git, Pandas, NumPy</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>University of Michigan — Ann Arbor</summary>
-        <div class="small">
-          Bachelor of Science in Public Health (BSPH)<br />
-          Completed May 2022
-        </div>
-        <div class="tags">
-          <span class="tag">Public Health</span>
-          <span class="tag">Research</span>
-          <span class="tag">Data</span>
-        </div>
-        <ul>
-          <li>Focused on population health, research methods, and data-driven decision making</li>
-          <li>Strong foundation in research design and analytical thinking</li>
-        </ul>
-      </details>
-    </div>
-
-    <!-- PROJECTS -->
-    <div class="card">
-      <h2>Projects</h2>
-
-      <details>
-        <summary>Applied Research & Data Analysis Internship — U-M Political Science (Winter 2026)</summary>
-        <div class="small">
-          University of Michigan — LSA Department of Political Science • Ann Arbor, MI<br />
-          Role: Applied Research and Data Analysis Intern • Jan 2026 – Apr 2026
-        </div>
-
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Survey Data</span>
-          <span class="tag">Text Analysis</span>
-          <span class="tag">Visualization</span>
-          <span class="tag">Web Scraping</span>
-        </div>
-
-        <ul>
-          <li>Cleaned, preprocessed, and managed survey data from ~3,000 respondents from Muslim communities in Thailand.</li>
-          <li>Performed text analysis on open-ended responses to identify themes related to religious identity, political recognition, and patronage.</li>
-          <li>Built Python workflows for data manipulation, aggregation, and transformation to prepare analysis-ready datasets.</li>
-          <li>Created visualizations to communicate findings to the principal investigator and support research decisions.</li>
-          <li>Assisted with data scraping/ingestion workflows to automate collection and structuring of survey data.</li>
-          <li>Collaborated through regular in-person meetings to refine methods, interpret results, and iterate based on feedback.</li>
-        </ul>
-
-        <div class="row">
-          <a class="pill" href="https://lsa.umich.edu/polisci" target="_blank" rel="noreferrer">Department</a>
-          <a class="pill" href="#" title="Add when you have a public repo or write-up">Code / Write-up (soon)</a>
-        </div>
-
-        <p class="small">
-          Outcome: (Add 1–2 measurable results later — e.g., “delivered X visualizations,” “built reusable pipeline,” etc.)
-        </p>
-      </details>
-
-      <details>
-        <summary>Program Assistant Internship — U-M Office of the Provost (Summer 2025)</summary>
-        <div class="small">
-          University of Michigan — Office of the Provost • Ann Arbor, MI<br />
-          Role: Program Assistant • May 2025 – Aug 2025
-        </div>
-
-        <div class="tags">
-          <span class="tag">Content Strategy</span>
-          <span class="tag">Data Mining</span>
-          <span class="tag">Visualization</span>
-          <span class="tag">WordPress</span>
-          <span class="tag">Communication</span>
-        </div>
-
-        <ul>
-          <li>Created and managed travel safety and identity abroad materials (videos, slide decks, PDFs) for students.</li>
-          <li>Published and updated content on the Global Michigan website (WordPress).</li>
-          <li>Supported pre-departure orientations by developing travel health and safety resources and destination risk materials.</li>
-          <li>Identified patterns in data via data mining and communicated insights through visualizations to inform content decisions.</li>
-          <li>Collaborated with the GET team through weekly check-ins and ongoing project support.</li>
-        </ul>
-
-        <div class="row">
-          <a class="pill" href="https://provost.umich.edu/" target="_blank" rel="noreferrer">Office of the Provost</a>
-          <a class="pill" href="https://global.umich.edu/" target="_blank" rel="noreferrer">Global Michigan</a>
-        </div>
-
-        <p class="small">
-          Outcome: (Add a measurable line later — e.g., “published X resources,” “created X videos,” “built a data-driven content pipeline,” etc.)
-        </p>
-      </details>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="card">
-      <h2>Experience</h2>
-
-      <details>
-        <summary>Program Assistant — Office of the Provost (U-M)</summary>
-        <div class="small">Aug 2024 – Aug 2025 • Ann Arbor, MI</div>
-        <div class="tags">
-          <span class="tag">Content</span>
-          <span class="tag">Communication</span>
-          <span class="tag">Projects</span>
-        </div>
-        <ul>
-          <li>Published and maintained travel and identity abroad content using WordPress.</li>
-          <li>Created educational materials including videos, slide decks, and PDFs.</li>
-          <li>Produced a five-part video series covering the student travel lifecycle.</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>Foreign Expert — Mahidol University</summary>
-        <div class="small">Dec 2022 – Jul 2024 • Bangkok, Thailand</div>
-        <div class="tags">
-          <span class="tag">Research</span>
-          <span class="tag">Fieldwork</span>
-          <span class="tag">Public Health</span>
-        </div>
-        <ul>
-          <li>Supported collaborations with universities across Asia and globally.</li>
-          <li>Conducted field research and contributed to targeted public health solutions.</li>
-          <li>Prepared reports and supported committee initiatives.</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>Career Support Specialist — University of Michigan</summary>
-        <div class="small">Sep 2021 – May 2022 • Ann Arbor, MI</div>
-        <div class="tags">
-          <span class="tag">Career</span>
-          <span class="tag">Workshops</span>
-          <span class="tag">Web</span>
-        </div>
-        <ul>
-          <li>Guided students through resumes, cover letters, and job applications.</li>
-          <li>Developed a career resources website with templates and opportunities.</li>
-          <li>Facilitated resume and cover letter workshops.</li>
-        </ul>
-      </details>
-    </div>
-
-
-    <!-- SKILLS -->
-    <div class="card skills">
-      <h2>Skills</h2>
-
-      <p class="small" style="margin-bottom:14px;">
-        Core technical and analytical skills developed through coursework, research, and applied internships.
-      </p>
-
-      <p class="small" style="margin-top:12px; font-weight:600;">Programming & Tools</p>
-      <div class="tags">
-        <span class="tag">Python</span>
-        <span class="tag">R</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Git / GitHub</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-      </div>
-
-      <p class="small" style="margin-top:14px; font-weight:600;">Analysis & Methods</p>
-      <div class="tags">
-        <span class="tag">Data Cleaning</span>
-        <span class="tag">Data Manipulation</span>
-        <span class="tag">Exploratory Data Analysis (EDA)</span>
-        <span class="tag">Statistical Analysis</span>
-        <span class="tag">Text Analysis</span>
-        <span class="tag">Survey Data</span>
-      </div>
-
-      <p class="small" style="margin-top:14px; font-weight:600;">Visualization & Web</p>
-      <div class="tags">
-        <span class="tag">Data Visualization</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Seaborn</span>
-        <span class="tag">Dashboards</span>
-        <span class="tag">Web Scraping</span>
-        <span class="tag">Data Ingestion</span>
-        <span class="tag">WordPress</span>
-        <span class="tag">Markdown</span>
-      </div>
-    </div>
-
-    <!-- Outside the Classroom (INSIDE the wrap + in the flow) -->
-    <div class="card">
-      <h2>Outside the Classroom</h2>
-      <p>
-        Outside of my academic and professional work, I enjoy staying active through hiking,
-        kayaking, biking, and strength training. I love traveling and exploring new places,
-        going to the theater, and spending time with friends—often over board games.
-      </p>
-      <p class="small">
-        I’m naturally extroverted and enjoy collaborative environments where ideas are shared
-        openly and work is driven by strong communication and teamwork.
-      </p>
-
-      <div class="photo-grid" aria-label="Personal photos">
-        <figure class="photo">
-          <img src="photo1.jpg" alt="Hassan hiking" loading="lazy" />
-          <figcaption>Fall</figcaption>
-        </figure>
-
-        <figure class="photo">
-          <img src="photo2.jpg" alt="Traveling" loading="lazy" />
-          <figcaption>Winter</figcaption>
-        </figure>
-
-        <figure class="photo">
-          <img src="photo3.jpg" alt="Theater outing" loading="lazy" />
-          <figcaption>Summer</figcaption>
-        </figure>
-      </div>
-    </div>
-
-    <p class="small">© 2026 Hassan Beydoun</p>
   </div>
 
   <script>
