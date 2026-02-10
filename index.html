@@ -199,7 +199,7 @@
       .hero img{ width: 96px; height: 96px; }
     }
 
-    /* Sparkle (HB) */
+    /* Sparkle (Hire me) */
     .sparkle {
       position: fixed;
       pointer-events: none;
@@ -212,7 +212,8 @@
         0 0 6px rgba(59,130,246,.25);
       letter-spacing: -0.5px;
       user-select: none;
-      animation: pop 1.6s ease-out forwards;
+      white-space: nowrap; /* prevent line breaks */
+      animation: pop 1.6s ease-out forwards; /* slower */
       will-change: transform, opacity;
     }
 
@@ -514,37 +515,34 @@
     </div>
   </div>
 
-<script>
-  // Sparkle: stable + visible
-  let lastSpark = 0;
+  <script>
+    // Sparkle: slower + less frequent (fixed)
+    let lastSpark = 0;
 
-  function spawnSpark(x, y) {
-    const s = document.createElement("div");
-    s.className = "sparkle";
-    s.textContent = "Hire me";
-    s.style.left = x + "px";
-    s.style.top = y + "px";
-    document.body.appendChild(s);
+    function spawnSpark(x, y) {
+      const s = document.createElement("div");
+      s.className = "sparkle";
+      s.textContent = "Hire me";
+      s.style.left = x + "px";
+      s.style.top = y + "px";
+      document.body.appendChild(s);
 
-    // Must match CSS animation duration (1.1s)
-    setTimeout(() => {
-  s.remove();
-}, 1600);
+      // Must match CSS animation duration (1.6s)
+      setTimeout(() => s.remove(), 1600);
+    }
 
+    // Spawn rate control: bigger number = fewer sparkles
+    const SPAWN_EVERY_MS = 120;
 
-  window.addEventListener("mousemove", (e) => {
-    const now = Date.now();
-    if (now - lastSpark < 120) return;
-    lastSpark = now;
-    spawnSpark(e.clientX, e.clientY);
-  });
+    window.addEventListener("mousemove", (e) => {
+      const now = Date.now();
+      if (now - lastSpark < SPAWN_EVERY_MS) return;
+      lastSpark = now;
+      spawnSpark(e.clientX, e.clientY);
+    });
 
-  window.addEventListener("click", (e) => {
-    lastSpark = Date.now();
-    spawnSpark(e.clientX, e.clientY);
-  });
-</script>
-= now;
+    window.addEventListener("click", (e) => {
+      lastSpark = Date.now();
       spawnSpark(e.clientX, e.clientY);
     });
   </script>
