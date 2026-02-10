@@ -514,35 +514,37 @@
     </div>
   </div>
 
-  <script>
-    // Sparkle: less frequent
-    let lastSpark = 0;
+<script>
+  // Sparkle: stable + visible
+  let lastSpark = 0;
 
-    function spawnSpark(x, y) {
-      const s = document.createElement("div");
-      s.className = "sparkle";
-      s.textContent = "Hire me";
-      s.style.left = x + "px";
-      s.style.top = y + "px";
-      document.body.appendChild(s);
-      setTimeout(() => s.remove(), 1100);
-    }
+  function spawnSpark(x, y) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.textContent = "Hire me";
+    s.style.left = x + "px";
+    s.style.top = y + "px";
+    document.body.appendChild(s);
 
-    let lastSpark = 0;
-
-window.addEventListener("mousemove", (e) => {
-  const now = Date.now();
-  if (now - lastSpark > 70) {
-    spawnSpark(e);
-    lastSpark = now;
+    // Must match CSS animation duration (1.1s)
+    setTimeout(() => {
+      s.remove();
+    }, 1100);
   }
-});
 
+  window.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastSpark < 70) return;
+    lastSpark = now;
+    spawnSpark(e.clientX, e.clientY);
+  });
 
-    window.addEventListener("click", (e) => {
-      const now = Date.now();
-      if (now - lastSpark < 120) return;
-      lastSpark = now;
+  window.addEventListener("click", (e) => {
+    lastSpark = Date.now();
+    spawnSpark(e.clientX, e.clientY);
+  });
+</script>
+= now;
       spawnSpark(e.clientX, e.clientY);
     });
   </script>
