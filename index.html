@@ -69,21 +69,25 @@
     .row { display:flex; gap:8px; flex-wrap:wrap; margin-top: 12px; }
 
     .pill {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 8px 12px;
-      display:inline-block;
-      text-decoration:none;
-      color: var(--text);
-      background: rgba(255,255,255,.7);
-      transition: transform .15s ease, box-shadow .15s ease;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
-      font-size: 14px;
-    }
-    .pill:hover {
-      transform: translateY(-2px) rotate(-0.3deg);
-      box-shadow: 0 14px 30px rgba(15,23,42,.10);
-    }
+  border-radius: 999px;
+  padding: 8px 14px;
+  display:inline-block;
+  text-decoration:none;
+  font-size: 14px;
+  font-weight: 600;
+  background: #2563eb;
+  color: white;
+  border: none;
+  transition: all .2s ease;
+  box-shadow: 0 8px 20px rgba(37,99,235,.25);
+}
+
+.pill:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37,99,235,.35);
+}
+
 
     .small { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
