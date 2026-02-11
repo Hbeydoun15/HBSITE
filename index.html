@@ -518,6 +518,7 @@
   <script>
     // Sparkle: slower + less frequent (fixed)
     let lastSpark = 0;
+    const MAX_SPARKLES = 6;
 
     function spawnSpark(x, y) {
       const s = document.createElement("div");
@@ -526,6 +527,8 @@
       s.style.left = x + "px";
       s.style.top = y + "px";
       document.body.appendChild(s);
+      if (document.querySelectorAll(".sparkle").length >= MAX_SPARKLES) return;
+
 
       // Must match CSS animation duration (1.6s)
       setTimeout(() => s.remove(), 1600);
