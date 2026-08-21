@@ -131,6 +131,33 @@
         inset 0 1px 0 rgba(255,255,255,.85);
     }
 
+    .course-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .course-link {
+      display: inline-flex;
+      padding: 7px 11px;
+      border: 1px solid rgba(59,130,246,.25);
+      border-radius: 10px;
+      background: rgba(239,246,255,.9);
+      color: #1e3a8a;
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.25;
+      text-decoration: none;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    }
+
+    .course-link:hover {
+      background: #dbeafe;
+      border-color: rgba(37,99,235,.45);
+      transform: translateY(-1px);
+    }
+
     /* Photo grid (for Outside the Classroom) */
     .photo-grid{
       display: grid;
@@ -333,6 +360,20 @@
               <span class="tag">Big Data</span>
               <span class="tag">Analytics</span>
               <span class="tag">Statistics</span>
+            </div>
+
+            <p class="small" style="margin-top:14px; margin-bottom:0; font-weight:700;">Coursework & syllabi</p>
+            <div class="course-list">
+              <a class="course-link" href="SI 506 Programming I W26.pdf" target="_blank" rel="noreferrer">SI 506 · Programming I</a>
+              <a class="course-link" href="SI 507 Syllabus Fall 2025.pdf" target="_blank" rel="noreferrer">SI 507 · Intermediate Programming</a>
+              <a class="course-link" href="SI 529 Winter26 Syllabus.pdf" target="_blank" rel="noreferrer">SI 529 · Online Communities</a>
+              <a class="course-link" href="SI 544 Syllabus FA 25 (1).pdf" target="_blank" rel="noreferrer">SI 544 · Statistics & Data Analysis</a>
+              <a class="course-link" href="SI 568 001 WN 2026.pdf" target="_blank" rel="noreferrer">SI 568 · Becoming a Data Scientist</a>
+              <a class="course-link" href="SI 602, Syllabus.pdf" target="_blank" rel="noreferrer">SI 602 · Math for Applied Data Science</a>
+              <a class="course-link" href="SI 608 F25 Syllabus (1).pdf" target="_blank" rel="noreferrer">SI 608 · Networks</a>
+              <a class="course-link" href="SI 649 W26 syllbus.pdf" target="_blank" rel="noreferrer">SI 649 · Information Visualization</a>
+              <a class="course-link" href="SI 664-Syllabus-F25-01.docx.pdf" target="_blank" rel="noreferrer">SI 664 · Database Application Design</a>
+              <a class="course-link" href="SI 671_721 Syllabus_ Data Mining_ Methods and Applications (1).pdf" target="_blank" rel="noreferrer">SI 671 · Data Mining</a>
             </div>
 
           </details>
